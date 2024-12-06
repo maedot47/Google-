@@ -15,18 +15,23 @@ function App() {
 
       <main>
         <div className="sidebar">
-          <div className="group-search">
+         <div className="group-search">
             <input type="text" placeholder="Group Name" className="search-input" />
           </div>
-          <span className="empty-text">Empty</span>
+          
           <div className="group-item">
+            
             <div className="group-avatar">
               <img src="avatar1.png" alt="Avatar 1" />
               <img src="avatar2.png" alt="Avatar 2" />
             </div>
             <span className="group-name">+1 BobGang</span>
           </div>
-          <button className="find-more-button">Find more matches</button>
+          <div className="find-more-button">
+          <span className="plus-icon">+</span>
+</div>
+
+          
         </div>
         <div className="main-content">
           {/* Main content is now correctly stretching */}
