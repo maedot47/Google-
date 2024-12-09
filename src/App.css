@@ -34,7 +34,6 @@ header {
 main {
   display: flex;
   flex: 1;
-  height: 50%; /* Ensures the main area fills the rest of the page */
 }
 
 .sidebar {
@@ -43,21 +42,17 @@ main {
   padding: 20px;
   box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
-  height: 88%; /* Sidebar should take full height  the group search bar on it*/
+  height: 100%; /* Sidebar should take full height */
   overflow-y: auto;
 }
 
 .main-content {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #FDF3E3;
-  height: 93%; /* Ensures the main content area takes the remaining height */
-}
-
-.empty-text {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 20px;
-  display: block;
+  padding: 20px;
 }
 
 .group-search {
@@ -65,7 +60,7 @@ main {
 }
 
 .search-input {
-  width: 80%;
+  width: 74%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -75,9 +70,14 @@ main {
 .group-item {
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 10px 15px;
   margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
 }
 
 .group-avatar {
@@ -86,8 +86,8 @@ main {
 }
 
 .group-avatar img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   margin-left: -10px;
   border: 2px solid white;
@@ -95,7 +95,7 @@ main {
 
 .group-name {
   font-weight: bold;
-  color: #000;
+  margin-left: 10px;
 }
 
 .find-more-button {
@@ -110,21 +110,113 @@ main {
   font-weight: bold;
   border-radius: 50%;
   cursor: pointer;
-  margin: 20px auto 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.find-more-button:hover {
+  background-color: #0056b3;
+}
+
+.team-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-option {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.find-more-button  :hover{
-  background-color : #0056b3;
-
+.team-option:hover {
+  background-color: #0056b3;
 }
 
-.plus-icon {
-  margin: 0;
-  padding: 0;
-  line-height: 1;
+.team-members {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+.team-member-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 600px;
+}
 
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.team-member .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 
+.team-member .name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.initial-screen {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.next-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.next-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+}
+
+/* New styles for the chat screen */
+.chat-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.chat-message {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
