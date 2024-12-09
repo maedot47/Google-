@@ -7,7 +7,7 @@ these links show the process of how our Idea was created and how we invision our
 [Google Doc](https://docs.google.com/document/d/1HrzRwfLQC909hGlSXfQqMIrO4o6KYwj5JZMhi9BKQxU/edit?usp=sharing)
 
 ## Reflection
-We had many struggles as we created this app. Finding the idea and creating a design had no bumps at all. I would say we are pretty proud of our Idea and design.
+We had many struggles as we created this app. Finding the idea and creating a design had no bumps at all. I would say we are pretty proud of our idea and design.
 But putting our design into code was a pain. Using VS code is very confusing.
 Making sure to download the required modules and dependencies was a struggle. Google was our best friend but sometimes they led us to the wrong link or download version. 
 Figuring out how to use git and github wasn't too much of a problem, just getting used to the process is all. As for the coding aspect, putting our ideas into code was the toughest part. 
