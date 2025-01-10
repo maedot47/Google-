@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
+
 function App() {
     const [showMap, setShowMap] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -14,14 +16,14 @@ function App() {
             mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(searchQuery)}`;
         }
     };
-
     const handleCategoryClick = (category) => {
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame) {
             mapFrame.src = `https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=${category}`;
         }
     };
-
+    
+    
     return (
         <div className="App">
             {!showMap ? (
@@ -43,6 +45,10 @@ function App() {
                         />
                         <button type="submit" className="search-btn">Search</button>
                     </form>
+                    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=settings" rel="stylesheet" />
+                
+                    
+                    <span class="material-symbols-outlined">settings</span>
 
                     {/* Category Buttons */}
                     <div className="category-buttons">
