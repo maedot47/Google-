@@ -6,8 +6,10 @@ import './App.css';
 function App() {
     const [showMap, setShowMap] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [showMenu, setShowMenu] = useState(false);
 
     const handleViewMapClick = () => setShowMap(true);
+    const toggleMenu = () => setShowMenu(!showMenu);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ function App() {
             ) : (
                 <div className="map-container">
                     <form className="search-bar" onSubmit={handleSearch}>
-                        <span className="hamburger-icon">☰</span>
+                        <span className="hamburger-icon" onClick={toggleMenu}>☰</span>
                         <input
                             type="text"
                             placeholder="Search for a location"
@@ -50,15 +52,46 @@ function App() {
                     
                     <span class="material-symbols-outlined">settings</span>
 
+                    {/* Hamburger Dropdown Menu */}
+                    {showMenu && (
+                        <div className="dropdown-menu">
+                            <div className="menu-header">
+                                <span className="google-map-icon">🗺️</span>
+                                <span className="close-menu" onClick={toggleMenu}>❌</span>
+                            </div>
+                            <div className="menu-options">
+                                <p onClick={() => handleCategoryClick('Saved')}>
+                                    <span className="material-icons">bookmark</span> Saved
+                                </p>
+                                <p onClick={() => handleCategoryClick('Recents')}>Recents</p>
+                                <p onClick={() => handleCategoryClick('Your contributions')}>Your contributions</p>
+                                <p onClick={() => handleCategoryClick('Location sharing')}>Location sharing</p>
+                                <p onClick={() => handleCategoryClick('Your timeline')}>Your timeline</p>
+                                <p onClick={() => handleCategoryClick('Your data in Maps')}>Your data in Maps</p>
+                                <p onClick={() => handleCategoryClick('Share or embed map')}>Share or embed map</p>
+                                <p onClick={() => handleCategoryClick('Print')}>Print</p>
+                                <p onClick={() => handleCategoryClick('Add a missing place')}>Add a missing place</p>
+                                <p onClick={() => handleCategoryClick('Add your business')}>Add your business</p>
+                                <p onClick={() => handleCategoryClick('Edit the map')}>Edit the map</p>
+                                <p onClick={() => handleCategoryClick('Tips and tricks')}>Tips and tricks</p>
+                                <p onClick={() => handleCategoryClick('Get help')}>Get help</p>
+                                <p onClick={() => handleCategoryClick('Consumer information')}>Consumer information</p>
+                                <p onClick={() => handleCategoryClick('Language')}>Language</p>
+                                <p onClick={() => handleCategoryClick('Search settings')}>Search settings</p>
+                                <p onClick={() => handleCategoryClick('Maps activity')}>Maps activity</p>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Category Buttons */}
                     <div className="category-buttons">
-                        <button onClick={() => handleCategoryClick('restaurants')}>🍽️ Restaurants</button>
-                        <button onClick={() => handleCategoryClick('hotels')}>🏨 Hotels</button>
-                        <button onClick={() => handleCategoryClick('things to do')}>🎉 Things to Do</button>
-                        <button onClick={() => handleCategoryClick('museums')}>🏛️ Museums</button>
-                        <button onClick={() => handleCategoryClick('transit')}>🚉 Transit</button>
-                        <button onClick={() => handleCategoryClick('pharmacies')}>💊 Pharmacies</button>
-                        <button onClick={() => handleCategoryClick('atm')}>🏧 ATMs</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('restaurants')}>🍽️ Restaurants</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('hotels')}>🏨 Hotels</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('things to do')}>🎉 Things to Do</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('museums')}>🏛️ Museums</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('transit')}>🚉 Transit</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('pharmacies')}>💊 Pharmacies</button>
+                        <button className="category-btn" onClick={() => handleCategoryClick('atm')}>🏧 ATMs</button>
                     </div>
 
                     <iframe
