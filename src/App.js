@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
-
-
 function App() {
+    // const apiKey = process.env.GOOGLE_API_KEY;
+    // console.log("api key is", apiKey);
     const [showMap, setShowMap] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [showMenu, setShowMenu] = useState(false);
@@ -11,17 +11,21 @@ function App() {
     const handleViewMapClick = () => setShowMap(true);
     const toggleMenu = () => setShowMenu(!showMenu);
 
+    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    // console.log("api key is", apiKey);
+    // console.log(process.env)
+
     const handleSearch = (e) => {
         e.preventDefault();
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame && searchQuery) {
-            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(searchQuery)}`;
+            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(searchQuery)}`;
         }
     };
     const handleCategoryClick = (category) => {
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame) {
-            mapFrame.src = `https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=${category}`;
+            mapFrame.src = `https://www.google.com/maps/embed/v1/search?key=${apiKey}&q=${category}`;
         }
     };
     
@@ -56,7 +60,9 @@ function App() {
                     {showMenu && (
                         <div className="dropdown-menu">
                             <div className="menu-header">
-                                <span src="google map.png">"google map.png"</span>
+                            
+                                {/* Displaying the Google Map Image */}
+      <img src="googlemap.png" alt="Google Map" className="map-image" />
                                 <span className="close-menu" onClick={toggleMenu}>❌</span>
                             </div>
                             <div className="menu-options">
