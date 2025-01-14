@@ -56,7 +56,7 @@ function App() {
                     {showMenu && (
                         <div className="dropdown-menu">
                             <div className="menu-header">
-                                <span className="google-map-icon">🗺️</span>
+                                <span src="google map.png">"google map.png"</span>
                                 <span className="close-menu" onClick={toggleMenu}>❌</span>
                             </div>
                             <div className="menu-options">
