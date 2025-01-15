@@ -13,30 +13,9 @@ function App() {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-
-        // Check if the search query exists
-        if (searchQuery) {
-            try {
-                // Replace 'YOUR_API_KEY' with your actual Google Maps Geocoding API key
-                const response = await axios.get(
-                    `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(searchQuery)}&key=AIzaSyCn9PlsBjvwhIlwUSgYMbt82Zu7egzks2U`
-                );
-
-                console.log('Geocoding API response:', response.data); // Log the response for debugging
-
-                if (response.data.status === 'OK') {
-                    const location = response.data.results[0].geometry.location;
-                    // Construct the URL for the new map based on the search result
-                    const newMapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${location.lat},${location.lng}`;
-                    setMapUrl(newMapUrl); // Update the map URL in state
-                } else {
-                    console.error('Geocoding API error:', response.data.status);
-                    alert('Location not found. Please check the spelling or try a different term.');
-                }
-            } catch (error) {
-                console.error("Error fetching location data:", error);
-                alert('An error occurred while fetching the location.');
-            }
+        const mapFrame = document.getElementById('mapFrame');
+        if (mapFrame && searchQuery) {
+            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(searchQuery)}`;
         }
     };
 
