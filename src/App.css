@@ -147,20 +147,21 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Adjust the gap between buttons */
   position: fixed;
-  bottom: 20px;
-  width: 100%;
+  bottom: 10px;
+  width: 78%;
   z-index: 1000;
+  left: 205px;
 }
 
 .category-buttons button {
   width: 150px;
-  height: 60px;
+  height: 50px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px p3x rgba(0, 0, 0, 0.1);
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -186,8 +187,6 @@ a {
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
-/* Importing Google Fonts (optional) */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 /* General styling for the dropdown menu options */
 .dropdown-menu .menu-options p {
@@ -217,12 +216,12 @@ a {
 .category-buttons {
     display: flex;
     justify-content: space-around;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .category-btn {
     font-family: 'Roboto', sans-serif;
-    padding: 10px 20px;
+    padding: 5px 5px;
     background-color: #f0f0f0;
     border: none;
     cursor: pointer;
@@ -253,8 +252,69 @@ a {
 .view-map-btn:hover {
     background-color: #45a049;
 }
+/* General menu option styling */
+.menu-option {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  left: center;
+  transition: background-color 0.3s;
+  text-align: left;
+}
 
-/* Fade-in animation for intro screen */
+/* Specific styling for "Your data in Maps" option */
+.menu-option.data-in-maps {
+  background-color: #f5f5f5; /* Light gray background */
+  border-bottom: 1px solid #e0e0e0; /* Light underline */
+  margin-top: 20px; /* Space above the option */
+}
+/* Google Maps Heading Style */
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.google-map-heading {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.g-blue {
+  color: RGB(66, 133, 244);
+}
+
+.o-red {
+  color:RGB (219, 68, 55);
+}
+
+.o-yellow {
+  color: yellow;
+}
+
+.g-blue {
+  color: blue;
+}
+
+.l-green {
+  color: green;
+}
+
+.e-red {
+  color: red;
+}
+
+.close-menu {
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
