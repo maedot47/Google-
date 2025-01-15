@@ -19,7 +19,7 @@ function App() {
         e.preventDefault();
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame && searchQuery) {
-            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(searchQuery)}`;
+            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(searchQuery)}`;
         }
     };
     const handleCategoryClick = (category) => {
