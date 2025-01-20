@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios';
+//import axios from 'axios';
 
 function App() {
     // const apiKey = process.env.GOOGLE_API_KEY;
@@ -12,6 +13,15 @@ function App() {
 
     const handleViewMapClick = () => setShowMap(true);
     const toggleMenu = () => setShowMenu(!showMenu);
+    const marker = new google.maps.marker.AdvancedMarkerElement({
+        position: myLatlng,
+        map,
+        title: "Click to zoom",
+      });
+      marker.addListener("click", () => {
+        map.setZoom(8);
+        map.setCenter(marker.position);
+      });
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     // console.log("api key is", apiKey);
@@ -21,7 +31,7 @@ function App() {
         e.preventDefault();
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame && searchQuery) {
-            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(searchQuery)}`;
+            mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(searchQuery)}`;
         }
     };
     const handleCategoryClick = (category) => {
