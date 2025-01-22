@@ -1,4 +1,4 @@
-# About Our App
+#About our Map
 Task/Feature:
 icons[setting options catagories] - Maedot
 map - Maedot
