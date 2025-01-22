@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './App.css';
 import axios from 'axios';
+import {
+    APIProvider,
+    Map,
+ Marker,
+    Pin
+} from '@vis.gl/react-google-maps';
 
 function App() {
     const [showMap, setShowMap] = useState(false);
@@ -11,6 +17,7 @@ function App() {
     const handleViewMapClick = () => setShowMap(true);
     const toggleMenu = () => setShowMenu(!showMenu);
 
+
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
     const handleSearch = async (e) => {
@@ -20,18 +27,21 @@ function App() {
             mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(searchQuery)}`;
         }
     };
+
     const handleCategoryClick = (category) => {
         const mapFrame = document.getElementById('mapFrame');
         if (mapFrame) {
             mapFrame.src = `https://www.google.com/maps/embed/v1/search?key=${apiKey}&q=${category}`;
         }
     };
-    const handleClick = useCallback((ev: google.maps.MapMouseEvent) => {
-        if(!map) return;
-        if(!ev.latLng) return;
-        console.log('marker clicked:', ev.latLng.toString());
-        map.panTo(ev.latLng);
-      })
+
+    const locations = [
+
+        { key: 'OLOL', location: { lat: 43.54771492657215, lng: -80.26824871298138 }, clickHandler: (ev) => {console.log("you clicked on OLOL")} },
+        { key: 'Main Entrance', location: { lat: -33.8567844, lng: 151.213108 }, clickHandler: (ev) => {console.log("you clicked on Main")} },
+        { key: 'Tech Entrance', location: { lat: -33.8472767, lng: 151.2188164 }, clickHandler: (ev) => {console.log("you clicked on Tech")} },
+    ];
+
     return (
         <div className="App">
             <link
@@ -57,9 +67,9 @@ function App() {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                         <button type="submit" className="search-btn">Search</button>
-                        <span 
-                            className="material-symbols-outlined directions-icon-wrapper" 
-                            title="Directions" 
+                        <span
+                            className="material-symbols-outlined directions-icon-wrapper"
+                            title="Directions"
                             data-tooltip="Directions"
                         >
                             directions
@@ -106,9 +116,9 @@ function App() {
                                     onClick={() => handleCategoryClick('Edit the map')}
                                     className="menu-option data-in-maps"
                                 >
-                                    <span 
-                                        className="material-symbols-outlined directions-icon" 
-                                        title="Directions" 
+                                    <span
+                                        className="material-symbols-outlined directions-icon"
+                                        title="Directions"
                                         data-tooltip="Directions"
                                     >
                                         directions
@@ -137,14 +147,23 @@ function App() {
                         <button className="category-btn" onClick={() => handleCategoryClick('atm')}>🏧 ATMs</button>
                     </div>
 
-                    <iframe
-                        id="mapFrame"
-                        title="Google Map"
-                        src={mapUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.812183176285!2d-80.2655838!3d43.5381472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b9a3a5896e8b5%3A0xf5d716cbb15b7a4b!2sGuelph%2C%20ON!5e0!3m2!1sen!2sca!4v1681234567890!5m2!1sen!2sca"}
-                        style={{ width: '100vw', height: '100vh', border: '0' }}
-                        allowFullScreen=""
-                        loading="lazy"
-                    ></iframe>
+                    <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
+                        <Map
+                            defaultZoom={13}
+                            defaultCenter={{ lat: 43.54769548589513, lng: -80.2682165264723 }}
+                            onCameraChanged={(ev) =>
+                                console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
+                            }>
+                            {locations.map((poi) => (
+                                <Marker
+                                onClick={poi.clickHandler}
+                                    key={poi.key}
+                                    position={poi.location}>
+                                    <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+                                </Marker>
+                            ))}
+                        </Map>
+                    </APIProvider>
                 </div>
             )}
         </div>
