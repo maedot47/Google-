@@ -1,4 +1,4 @@
-/* Remove underline from all text */
+
 * {
   text-decoration: none;
   margin: 0;
@@ -314,6 +314,55 @@ a {
   color: #333;
 }
 
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gallery-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.directions-icon {
+  font-size: 24px;
+  color: #007bff;
+  position: relative;
+  cursor: pointer;
+}
+.directions-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.directions-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px; /* Adjust based on icon position */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.directions-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 @keyframes fadeIn {
   from {
@@ -323,3 +372,4 @@ a {
     opacity: 1;
   }
 }
+/* Sidebar styles for directions (on the left side) */

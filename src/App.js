@@ -4,12 +4,10 @@ import './App.css';
 //import axios from 'axios';
 
 function App() {
-    // const apiKey = process.env.GOOGLE_API_KEY;
-    // console.log("api key is", apiKey);
     const [showMap, setShowMap] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [showMenu, setShowMenu] = useState(false);
-    const [mapUrl, setMapUrl] = useState(''); // State to hold the new map URL
+    const [mapUrl, setMapUrl] = useState('');
 
     const handleViewMapClick = () => setShowMap(true);
     const toggleMenu = () => setShowMenu(!showMenu);
@@ -24,8 +22,6 @@ function App() {
       });
 
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    // console.log("api key is", apiKey);
-    // console.log(process.env)
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -40,11 +36,14 @@ function App() {
             mapFrame.src = `https://www.google.com/maps/embed/v1/search?key=${apiKey}&q=${category}`;
         }
     };
-    
-    
+    const handleClick = useCallback((ev: google.maps.MapMouseEvent) => {
+        if(!map) return;
+        if(!ev.latLng) return;
+        console.log('marker clicked:', ev.latLng.toString());
+        map.panTo(ev.latLng);
+      })
     return (
         <div className="App">
-            {/* Google Fonts Links for Icons */}
             <link
                 rel="stylesheet"
                 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -68,13 +67,15 @@ function App() {
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                         <button type="submit" className="search-btn">Search</button>
+                        <span 
+                            className="material-symbols-outlined directions-icon-wrapper" 
+                            title="Directions" 
+                            data-tooltip="Directions"
+                        >
+                            directions
+                        </span>
                     </form>
-                    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=settings" rel="stylesheet" />
-                
-                    
-                    <span class="material-symbols-outlined">settings</span>
 
-                    {/* Hamburger Dropdown Menu */}
                     {showMenu && (
                         <div className="dropdown-menu">
                             <div className="menu-header">
@@ -97,14 +98,12 @@ function App() {
                                 <p onClick={() => handleCategoryClick('Your timeline')}>
                                     <span className="material-symbols-outlined">timeline</span> Your timeline
                                 </p>
-
                                 <p
                                     onClick={() => handleCategoryClick('Your data in Maps')}
                                     className="menu-option data-in-maps"
                                 >
                                     <span className="material-symbols-outlined">shield_person</span> Your data in Maps
                                 </p>
-
                                 <p onClick={() => handleCategoryClick('Share or embed map')}>
                                     <span className="material-symbols-outlined">link</span> Share or embed map
                                 </p>
@@ -117,9 +116,15 @@ function App() {
                                     onClick={() => handleCategoryClick('Edit the map')}
                                     className="menu-option data-in-maps"
                                 >
+                                    <span 
+                                        className="material-symbols-outlined directions-icon" 
+                                        title="Directions" 
+                                        data-tooltip="Directions"
+                                    >
+                                        directions
+                                    </span>
                                     Edit the map
                                 </p>
-
                                 <p onClick={() => handleCategoryClick('Tips and tricks')}>Tips and tricks</p>
                                 <p onClick={() => handleCategoryClick('Get help')}>Get help</p>
                                 <p onClick={() => handleCategoryClick('Consumer information')}>Consumer information</p>
@@ -132,7 +137,6 @@ function App() {
                         </div>
                     )}
 
-                    {/* Category Buttons */}
                     <div className="category-buttons">
                         <button className="category-btn" onClick={() => handleCategoryClick('restaurants')}>🍽️ Restaurants</button>
                         <button className="category-btn" onClick={() => handleCategoryClick('hotels')}>🏨 Hotels</button>
@@ -143,7 +147,6 @@ function App() {
                         <button className="category-btn" onClick={() => handleCategoryClick('atm')}>🏧 ATMs</button>
                     </div>
 
-                    {/* Map Frame */}
                     <iframe
                         id="mapFrame"
                         title="Google Map"
