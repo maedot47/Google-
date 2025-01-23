@@ -38,8 +38,8 @@ Our website is like a regular Google Map, with postal addresses, icons, and cate
 
 Who’s it for and why?
 This is perfect for new students and staff at Our Lady of Lourdes who might feel shy or awkward about asking for directions. It’s like having a personal tour guide without having to talk to anyone. For example, if you’re trying to find your way around, you can click on a hallway to see which room numbers are there. It’s super handy if you’re trying to get to class quickly or figure out where your next room is.
-
 Plus, it’s not just for new people! Even if you’ve been here a while, it’s a great tool to help you learn more about the building and save time. No more wandering around wondering where things are—just click, explore, and go.
 
-
+Evangeline Reflection: I learned a lot about Google Maps and its functions, which were very impressive. I didn’t realize it offered so many features and tutorials. Working with the API key, search functionality, and click detector was challenging. However, after spending several days fixing errors and revisiting the Google Maps tutorials, we managed to figure it out.
+Overall, this course was okay this year. I feel like I explored more ideas compared to the more structured, critical learning I did last year. The semester went by quickly, but it was a fine experience
 
