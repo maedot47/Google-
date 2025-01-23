@@ -1,11 +1,5 @@
-//Task/Feature:
-icons[setting options catagories] - Maedot
-map - Maedot
-api(Embedded) - Maedot
-api(start work) - Evangeline
-apikey - Maedot/Evangeline
-//images(taking around the school) - Maedot/Evangeline
-search - Maedot/Evangeline
+#Task/Feature:
+
 
 
 Coordinate of school insert - Evangeline
