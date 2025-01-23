@@ -17,7 +17,7 @@ This table organizes and tracks the different tasks and components of the projec
 | **Evangeline Write-Up**    | Create detailed documentation for the Evangeline API.                      
 
 ## Key Features
--Location Data: Each location (like "OLOL" or "Main Entrance") has associated latitude/longitude coordinates and an array of image URLs.
+*Location Data: Each location (like "OLOL" or "Main Entrance") has associated latitude/longitude coordinates and an array of image URLs.
 -Image Navigation: When a location is selected, the images for that location are shown, and users can cycle through them using the navigation buttons.
 -Split Screen Layout: If a location is selected, the app switches to a split-screen layout where the map is on one side and the images are on the other.
 -Full Map View: When no location is selected, the app shows a default view of the map with all markers visible.
