@@ -16,7 +16,11 @@ This table organizes and tracks the different tasks and components of the projec
 | **School Image Capture**   | Allow users to take and upload images around the school.                    | Integrate image capture functionality.                                |
 | **Evangeline Write-Up**    | Create detailed documentation for the Evangeline API.                      
 
-
+## Key Features
+-Location Data: Each location (like "OLOL" or "Main Entrance") has associated latitude/longitude coordinates and an array of image URLs.
+-Image Navigation: When a location is selected, the images for that location are shown, and users can cycle through them using the navigation buttons.
+-Split Screen Layout: If a location is selected, the app switches to a split-screen layout where the map is on one side and the images are on the other.
+-Full Map View: When no location is selected, the app shows a default view of the map with all markers visible.
 Our website is normal google map version(have postal adresses,) but in our google map you can explore the school by clicking into spefic parts of the building.
 why and who is this useful to?
 This is useful to students are staff that are new to Our lady of Lourdes and prefer not asking other people. Also, if you click hallways than it will tell you what room numbers are in the h
